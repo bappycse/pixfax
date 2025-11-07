@@ -17,7 +17,7 @@ class FreeTrialController extends Controller
 
         $data['email'] = 'Free Trial';
 
-        Mail::send('email.email', $data, function($message) use ($data, $files) {
+        Mail::send('email.email', ['data' => $data], function($message) use ($data, $files) {
             $message->to('ashadbappycse@gmail.com', 'ashadbappycse@gmail.com')
                 ->cc(['info@pixfax.com'])
                 ->subject($data['email']);
