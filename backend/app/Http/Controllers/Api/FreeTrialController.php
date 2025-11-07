@@ -15,13 +15,9 @@ class FreeTrialController extends Controller
     {
         $files = $request->file('image');
 
-        $details = [
-            'title' => 'Mail from ItSolutionStuff.com',
-            'body' => 'This is for testing email using smtp'
-        ];
         $data['email'] = 'Free Trial';
         Mail::send('welcome', $data, function($message) use ($data, $files) {
-            $message->to('ashadbappycse@gmail.com','ashadbappycse@gmail.com')->cc(['hasibulkabir06@gmail.com','hasibulkabir06@gmail.com'])
+            $message->to('ashadbappycse@gmail.com','ashadbappycse@gmail.com')
                 ->subject($data["email"]);
 
             foreach ($files as $file){
