@@ -27,7 +27,7 @@ class FreeTrialInfoController extends Controller
 
         if($service_type == 'Free Trial'){
             Mail::send('email.free', $data, function($message)use($data) {
-                $message->to('ashadbappycse@gmail.com','ashadbappycse@gmail.com')->cc(['info@photoeditscenter.com','info@photoeditscenter.com'])
+                $message->to('ashadbappycse@gmail.com','ashadbappycse@gmail.com')->cc(['info@pixfax.com','info@pixfax.com'])
                     ->subject($data["service_type"]);
             });
         }else {
