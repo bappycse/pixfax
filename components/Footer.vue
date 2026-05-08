@@ -45,8 +45,7 @@
                   <li class="social-link">
                     <a href="https://www.facebook.com/pixfax" target="_blank"><Icon name="bxl:facebook-square" color="#007bff" /></a>
                     <a href="https://twitter.com/pixfax" target="_blank"><Icon name="bxl:twitter" color="#007bff" /></a>
-                    <a href="https://www.linkedin.com/in/photo-edits-center-b5591524a" target="_blank"><Icon name="bxl:linkedin-square" color="#007bff" /></a>
-                    <a href="https://www.tumblr.com/settings/blog/photoediscenter" target="_blank"><Icon name="bxl:tumblr" color="#007bff" /></a>
+                    <a href="https://www.linkedin.com/in/pixfax-studio-9073b23b5/" target="_blank"><Icon name="bxl:linkedin-square" color="#007bff" /></a>
                     <a href="https://www.pinterest.com/pixfax" target="_blank"><Icon name="bxl:pinterest" color="#007bff" /></a>
                     <a href="https://www.instagram.com/pixfax/" target="_blank"><Icon name="bxl:instagram" color="#007bff" /></a>
                   </li>
