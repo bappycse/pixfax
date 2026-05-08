@@ -282,7 +282,7 @@
   </section>
 </template>
 <script setup>
-  const title = ref('Photo Edits  Center');
+  const title = ref('Pixfax');
   const description = ref(' Pix Fax provided clipping path related services');
 </script>
 

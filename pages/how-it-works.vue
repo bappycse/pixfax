@@ -106,7 +106,7 @@
   </section>
 </template>
 <script setup>
-const title = ref('Photo Edits  Center | How it Works');
+const title = ref('Pixfax | How it Works');
 const description = ref(' Pix Fax provided clipping path related services');
 </script>
 <style scoped>

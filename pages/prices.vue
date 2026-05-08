@@ -782,7 +782,7 @@
 
 </template>
 <script setup>
-const title = ref('Photo Edits  Center | Prices');
+const title = ref('Pixfax | Prices');
 const description = ref(' Pix Fax provided clipping path related services');
 </script>
 

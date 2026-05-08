@@ -158,7 +158,7 @@
 <script setup>
 const axios = useNuxtApp().$axios
 const { $axios } = useNuxtApp();
-const title = ref('Photo Edits  Center | Free Trial');
+const title = ref('Pixfax | Free Trial');
 const description = ref(' Pix Fax provided clipping path related services');
 const allInfo = ref({
   name: null,

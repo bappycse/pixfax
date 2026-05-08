@@ -14,7 +14,7 @@
                   <img style="display: block" :class="{ open: mobileMenu }"  src="~assets/images/menu.png" alt="">
                   <img style="display: none"  :class="{ close: closeMenu }" src="~assets/images/close.png" alt="">
                 </button>
-                <Nuxt-link  to="/"><img src="~assets/images/logo.png" alt="Photo Edits Logo"></Nuxt-link>
+                <Nuxt-link  to="/"><img src="~assets/images/logo1.png" alt="Pix Fax Logo"></Nuxt-link>
               </div>
             </div>
           </div>

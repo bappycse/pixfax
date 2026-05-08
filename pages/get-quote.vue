@@ -119,7 +119,7 @@
 <script setup>
 const axios = useNuxtApp().$axios
 const { $axios } = useNuxtApp();
-const title = ref('Photo Edits  Center | Get Quote');
+const title = ref('Pixfax | Get Quote');
 const description = ref(' Pix Fax provided clipping path related services');
 const allServices = [
   { id: 1, name: "Clipping Path", selected: false },
