@@ -32,8 +32,12 @@ class FreeTrialInfoController extends Controller
                     ->subject($data["service_type"]);
             });
         }else {
-            Mail::send('email.commercial', $data, function($message)use($data) {
-                $message->to($data["email"], $data["email"])->cc(['ashadbappycse@gmail.com','pixfax.studio@gmail.com'])
+            Mail::send('email.commercial', ['data' => $data], function($message) use ($data) {
+                $message->to($data["email"])
+                    ->cc([
+                        'ashadbappycse@gmail.com',
+                        'pixfax.studio@gmail.com'
+                    ])
                     ->subject($data["service_type"]);
             });
         }
