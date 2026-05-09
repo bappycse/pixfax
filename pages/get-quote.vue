@@ -107,7 +107,7 @@
                       <button class="btn btn-block" :class="{ 'in-active': status }" type="submit" >Send Now!</button>
                       <img src="~/assets/images/mail_send.gif" class="in-active" :class="{ 'active': sendStatus }"   alt="Send Mail Image" >
                       <p class="text-center in-active " :class="{ 'send-message': sendStatusDone}" >Quotation Send Successfully</p>
-                    </div></div>
+                    </div>
                 </form>
               </div>
             </div>
@@ -152,9 +152,6 @@ const returnTypes = [
   "PSD",
   "TIFF",
 ];
-
-
-
 
 const allInfo = ref({
   name: null,
@@ -458,7 +455,6 @@ const onChange = (e) => {
   }
   console.log(uploadFiles.value);
 }
-
 
 function formatBytes(bytes, decimals = 2) {
   if (!+bytes) return '0 Bytes'
