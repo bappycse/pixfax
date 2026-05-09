@@ -19,7 +19,10 @@ class FreeTrialController extends Controller
 
         Mail::send('email.email', ['data' => $data], function($message) use ($data, $files) {
             $message->to('ashadbappycse@gmail.com', 'ashadbappycse@gmail.com')
-                ->cc(['info@pixfax.com'])
+                ->cc([
+                    'info@pixfax.com',
+                    'pixfax.studio@gmail.com'
+                ])
                 ->subject($data['email']);
 
             // Check if the request has uploaded file(s)
