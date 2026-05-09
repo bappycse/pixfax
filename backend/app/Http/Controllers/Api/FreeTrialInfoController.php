@@ -27,13 +27,13 @@ class FreeTrialInfoController extends Controller
 
         if($service_type == 'Free Trial'){
             Mail::send('email.free', $data, function($message)use($data) {
-                $message->to('pixfax.studio@gmail.com','pixfax.studio@gmail.com')
+                $message->to('ashadbappycse@gmail.com','pixfax.studio@gmail.com')
                     ->cc(['info@pixfax.com','pixfax.studio@gmail.com'])
                     ->subject($data["service_type"]);
             });
         }else {
             Mail::send('email.commercial', $data, function($message)use($data) {
-                $message->to($data["email"], $data["email"])->cc(['photoeditscenter@gmail.com','pixfax.studio@gmail.com'])
+                $message->to($data["email"], $data["email"])->cc(['ashadbappycse@gmail.com','pixfax.studio@gmail.com'])
                     ->subject($data["service_type"]);
             });
         }
