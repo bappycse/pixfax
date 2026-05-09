@@ -77,11 +77,12 @@
                     </div>
                   </div>
                   <div class="row">
-                      <div v-for="services in allServices" class="col-md-4 service-box">
-                        <label for="services.name">
-                          {{services.name}}
-                          <input type="checkbox" id="{{services.name}}" v-model="services.selected">
-                        </label>
+                    <div v-for="service in allServices" :key="service.id" class="col-md-4 service-box">
+                      <label :for="service.name">
+                        {{ service.name }}
+                        <input type="checkbox" :id="service.name" v-model="service.selected">
+                      </label>
+                    </div>
                   </div>
                     <div class="col-sm-12 from-group">
                         <label for=""><b>File Link</b></label>
@@ -121,7 +122,7 @@ const axios = useNuxtApp().$axios
 const { $axios } = useNuxtApp();
 const title = ref('Pixfax | Get Quote');
 const description = ref(' Pix Fax provided clipping path related services');
-const allServices = [
+const allServices = ref([
   { id: 1, name: "Clipping Path", selected: false },
   { id: 2, name: "Background Remove", selected: false },
   { id: 3, name: "Image Masking", selected: false },
@@ -134,7 +135,7 @@ const allServices = [
   { id: 10, name: "Jewelry Photo Editing", selected: false },
   { id: 11, name: "E-Commerce Service", selected: false },
   { id: 12, name: "Vector Services", selected: false },
-];
+]);
 
 const deliveryTimes = [
   "12 Hours",
@@ -151,16 +152,7 @@ const returnTypes = [
   "PSD",
   "TIFF",
 ];
-const serviceData = ref([]);
 
-const selectedServices = () => {
-  for (let i = 0; i < allServices.length; i++) {
-    if (allServices[i].selected === true) {
-      serviceData.value.push(allServices[i].name);
-    }
-  }
-  return serviceData;
-};
 
 
 
@@ -175,7 +167,6 @@ const allInfo = ref({
   deliveryTime: null,
   returnType: null,
   fileLink: null,
-  serviceName: serviceData,
   serviceType: "Commercial",
 });
 
@@ -189,8 +180,8 @@ const resetData = () => {
   allInfo.value.quantity = null;
   allInfo.value.deliveryTime = null;
   allInfo.value.returnType = null;
-  allInfo.value.serviceName = null;
   allInfo.value.fileLink = null;
+  allServices.value.forEach(service => service.selected = false);
 }
 
 const status = ref(false);
@@ -453,7 +444,6 @@ const imageFile = ref("");
 const uploadFiles = ref([]);
 
 const onChange = (e) => {
-  selectedServices();
   status.value = false;
   sendStatusDone.value = false;
   uploadFiles.value = [];
@@ -494,7 +484,13 @@ function freeTrial() {
   fd.append('country', allInfo.value.country);
   fd.append('phone', allInfo.value.phone);
   fd.append('note', allInfo.value.note);
-  fd.append('serviceName', allInfo.value.serviceName);
+
+  const selectedNames = allServices.value
+      .filter(service => service.selected)
+      .map(service => service.name)
+      .join(', ');
+  fd.append('serviceName', selectedNames);
+
   fd.append('quantity', allInfo.value.quantity);
   fd.append('deliveryTime', allInfo.value.deliveryTime);
   fd.append('returnType', allInfo.value.returnType);
