@@ -500,7 +500,7 @@ function freeTrial() {
   fd.append('returnType', allInfo.value.returnType);
   fd.append('fileLink', allInfo.value.fileLink);
   fd.append('serviceType', allInfo.value.serviceType);
-  $axios.post('https://api.pixfax.com/api/free-trial', fd)
+  $axios.post('https://api.pixfax.com/api/get-quote', fd)
       .then((response) => {
         if(response.status == 200){
           sendStatus.value = false;
