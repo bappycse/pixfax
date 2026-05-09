@@ -481,11 +481,11 @@ function freeTrial() {
   fd.append('phone', allInfo.value.phone);
   fd.append('note', allInfo.value.note);
 
-  const selectedNames = allServices.value
+  allServices.value
       .filter(service => service.selected)
-      .map(service => service.name)
-      .join(', ');
-  fd.append('serviceName', selectedNames);
+      .forEach(service => {
+        fd.append('serviceName[]', service.name);
+      });
 
   fd.append('quantity', allInfo.value.quantity);
   fd.append('deliveryTime', allInfo.value.deliveryTime);
