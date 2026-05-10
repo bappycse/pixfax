@@ -15,7 +15,12 @@ class FreeTrialController extends Controller
     {
         $files = $request->file('image');  // can be a single file or array
 
-        $data['email'] = 'Free Trial';
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['country'] = $request->country;
+        $data['phone'] = $request->phone;
+        $data['note'] = $request->note;
+        $data['serviceType'] = $request->serviceType;
 
         Mail::send('email.email', ['data' => $data], function($message) use ($data, $files) {
             $message->from('info@pixfax.com', 'Pixfax')
@@ -24,6 +29,15 @@ class FreeTrialController extends Controller
                     'ashadbappycse@gmail.com',
                     'pixfax.studio@gmail.com'
                 ])->subject($data['email']);;
+
+            $message->from('info@pixfax.com', 'Pixfax')
+                ->replyTo($data["email"], $data["name"])
+                ->to('info@pixfax.com')
+                ->cc([
+                    'ashadbappycse@gmail.com',
+                    'pixfax.studio@gmail.com'
+                ])
+                ->subject($data['email']);
 
             // Check if the request has uploaded file(s)
             if ($files) {
