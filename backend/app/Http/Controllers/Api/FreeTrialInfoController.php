@@ -33,25 +33,33 @@ class FreeTrialInfoController extends Controller
             });
         } else {
             Mail::send('email.commercial', ['data' => $data], function($message) use ($data, $files) {
-                $message->to($data["email"])
+
+                $message->from('info@pixfax.com', 'Pixfax')
+                    ->replyTo($data["email"], $data["name"])
+                    ->to('info@pixfax.com')
                     ->cc([
-                        'info@pixfax.com',
                         'ashadbappycse@gmail.com',
                         'pixfax.studio@gmail.com'
                     ])
-                    ->subject($data["service_type"]);
+                    ->subject('Commercial Inquiry - '.$data["service_type"]);
 
                 if ($files) {
+
                     if (!is_array($files)) {
-                        $files = [$files]; // make it an array
+                        $files = [$files];
                     }
 
                     foreach ($files as $file) {
+
                         if ($file && $file->isValid()) {
-                            $message->attach($file->getRealPath(), [
-                                'as' => $file->getClientOriginalName(),
-                                'mime' => $file->getMimeType(),
-                            ]);
+
+                            $message->attach(
+                                $file->getRealPath(),
+                                [
+                                    'as' => $file->getClientOriginalName(),
+                                    'mime' => $file->getMimeType(),
+                                ]
+                            );
                         }
                     }
                 }
