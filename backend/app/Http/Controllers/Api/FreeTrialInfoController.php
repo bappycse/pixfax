@@ -23,22 +23,37 @@ class FreeTrialInfoController extends Controller
         $data['country'] = $request->country;
         $data['service_name'] = implode(", " ,$service_names);
         $data['service_type'] = $request->serviceType;
+        $files = $request->file('image');
 
-
-        if($service_type == 'Free Trial'){
+        if ($service_type == 'Free Trial'){
             Mail::send('email.free', $data, function($message)use($data) {
                 $message->to('ashadbappycse@gmail.com','pixfax.studio@gmail.com')
                     ->cc(['info@pixfax.com','pixfax.studio@gmail.com'])
                     ->subject($data["service_type"]);
             });
-        }else {
-            Mail::send('email.commercial', ['data' => $data], function($message) use ($data) {
+        } else {
+            Mail::send('email.commercial', ['data' => $data], function($message) use ($data, $files) {
                 $message->to($data["email"])
                     ->cc([
                         'ashadbappycse@gmail.com',
                         'pixfax.studio@gmail.com'
                     ])
                     ->subject($data["service_type"]);
+
+                if ($files) {
+                    if (!is_array($files)) {
+                        $files = [$files]; // make it an array
+                    }
+
+                    foreach ($files as $file) {
+                        if ($file && $file->isValid()) {
+                            $message->attach($file->getRealPath(), [
+                                'as' => $file->getClientOriginalName(),
+                                'mime' => $file->getMimeType(),
+                            ]);
+                        }
+                    }
+                }
             });
         }
         return response()->json(["message" => "success", 'status' => 200]);
