@@ -35,6 +35,7 @@ class FreeTrialInfoController extends Controller
             Mail::send('email.commercial', ['data' => $data], function($message) use ($data, $files) {
                 $message->to($data["email"])
                     ->cc([
+                        'info@pixfax.com',
                         'ashadbappycse@gmail.com',
                         'pixfax.studio@gmail.com'
                     ])
