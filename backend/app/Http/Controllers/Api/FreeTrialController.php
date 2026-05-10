@@ -29,17 +29,7 @@ class FreeTrialController extends Controller
                     'ashadbappycse@gmail.com',
                     'pixfax.studio@gmail.com'
                 ])->subject('Free Trial');;
-
-            $message->from('info@pixfax.com', 'Pixfax')
-                ->replyTo($data["email"], $data["name"])
-                ->to('info@pixfax.com')
-                ->cc([
-                    'ashadbappycse@gmail.com',
-                    'pixfax.studio@gmail.com'
-                ])
-                ->subject($data['email']);
-
-            // Check if the request has uploaded file(s)
+                
             if ($files) {
                 // If it's a single file
                 if (!is_array($files)) {
