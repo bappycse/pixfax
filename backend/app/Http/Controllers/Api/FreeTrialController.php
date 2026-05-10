@@ -28,7 +28,7 @@ class FreeTrialController extends Controller
                 ->cc([
                     'ashadbappycse@gmail.com',
                     'pixfax.studio@gmail.com'
-                ])->subject($data['email']);;
+                ])->subject($data['Free Trial']);;
 
             $message->from('info@pixfax.com', 'Pixfax')
                 ->replyTo($data["email"], $data["name"])
